@@ -28,12 +28,15 @@ void ActionSelect::Execute()
 			}
 			bool FillStatusBeforeHighlighted = figSelected->IsShapeFilled();//save the filling status before changing the filling color
 			//start highlight
-			figSelected->ChngDrawClr(pGUI->getCrntHighlightColor()); //change the draw color of the object to be highlighted
+			//figSelected->ChngDrawClr(pGUI->getCrntHighlightColor()); //change the draw color of the object to be highlighted
 			
-			figSelected->ChngFillClr(pGUI->getCrntHighlightColor());//change the filling color to be highlighted
+			if (figSelected->IsShapeFilled())
+			{
+				figSelected->ChngFillClr(pGUI->getCrntHighlightColor());//change the filling color to be highlighted
+			}
 			//filled = true
 
-			figSelected->setFilling(FillStatusBeforeHighlighted);//change the filling status to the saved filling status before being highlighted
+			//figSelected->setFilling(FillStatusBeforeHighlighted);//change the filling status to the saved filling status before being highlighted
 			//filled = false/true
 			pManager->UpdateInterface();
 			pGUI->ClearStatusBar();
